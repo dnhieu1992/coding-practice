@@ -1,7 +1,6 @@
-import { ChevronDownIcon, ChevronRightIcon } from 'lucide-react'
 import type { MouseEventHandler, ReactNode } from 'react'
+import { ChevronDownIcon, ChevronRightIcon } from 'lucide-react'
 import { useContext } from 'react'
-
 import { AccordionContext } from './Accordion'
 
 export type AccordionSummaryProps =
