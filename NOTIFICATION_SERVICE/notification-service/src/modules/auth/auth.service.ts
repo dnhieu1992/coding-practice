@@ -24,6 +24,7 @@ export class AuthService {
   }
 
   async register(registerDto: RegisterDto) {
+    console.log('registerDto', registerDto);
     const existingUser = await this.userService.getUserByEmail(
       registerDto.email,
     );
@@ -67,7 +68,9 @@ export class AuthService {
       throw new UnauthorizedException('Invalid credentials');
     }
 
-    const token = this.signToken(user.id, user.email);
+    console.log('user', user);
+    const token = await this.signToken(user.id, user.email);
+    console.log('token', token);
 
     return {
       user: this.safeUser(user),
