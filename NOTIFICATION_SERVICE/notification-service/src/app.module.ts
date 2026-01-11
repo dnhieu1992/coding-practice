@@ -9,6 +9,8 @@ import { UserModule } from './modules/user/user.module';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { join } from 'path';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
+import { EmailModule } from './modules/email/email.module';
+import { SmsModule } from './modules/sms/sms.module';
 
 @Module({
   imports: [
@@ -41,6 +43,8 @@ import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handleba
     DatabaseModule,
     AuthModule,
     UserModule,
+    EmailModule,
+    SmsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
