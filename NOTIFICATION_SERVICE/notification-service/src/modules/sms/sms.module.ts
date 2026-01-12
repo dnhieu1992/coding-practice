@@ -3,7 +3,7 @@ import { SmsController } from './sms.controller';
 import { SmsService } from './sms.service';
 
 @Module({
-  imports: [SmsService],
+  providers: [SmsService],
   exports: [SmsService],
   controllers: [SmsController],
 })

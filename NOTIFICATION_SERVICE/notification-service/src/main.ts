@@ -25,9 +25,13 @@ async function bootstrap() {
     )
     .addTag('auth', 'Authentication endpoints')
     .addTag('user', 'User management endpoints')
+    .addTag('email', 'Email notification endpoints')
+    .addTag('sms', 'SMS notification endpoints')
+    .addTag('telegram', 'Telegram notification endpoints')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
+
   SwaggerModule.setup('api', app, document, {
     swaggerOptions: {
       persistAuthorization: true,

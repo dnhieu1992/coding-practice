@@ -11,21 +11,22 @@ import { join } from 'path';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
 import { EmailModule } from './modules/email/email.module';
 import { SmsModule } from './modules/sms/sms.module';
+import { TelegramModule } from './modules/telegram/telegram.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+
     MailerModule.forRootAsync({
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
         transport: {
-          host: configService.get<string>('MAIL_HOST'),
-          port: Number(configService.get('MAIL_PORT')),
+          host: configService.get<string>('SMTP_HOST'),
+          port: Number(configService.get('SMTP_PORT')),
           secure: configService.get<string>('SMTP_SECURE') === 'true',
           auth: {
-            user: configService.get<string>('MAIL_USER'),
-            pass: configService.get<string>('MAIL_PASS'),
+            user: configService.get<string>('SMTP_USER'),
+            pass: configService.get<string>('SMTP_PASS'),
           },
         },
         defaults: {
@@ -45,6 +46,7 @@ import { SmsModule } from './modules/sms/sms.module';
     UserModule,
     EmailModule,
     SmsModule,
+    TelegramModule,
   ],
   controllers: [AppController],
   providers: [AppService],
